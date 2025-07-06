@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": "custom-learning",
+      "icon": "fingerprint",
+      "name": "Custom Learning Plan",
+      "description": "Tailored learning experiences designed to meet individual needs and goals.",
+      "price": "Starting at $2.50",
+      "image": "/placeholder.svg?height=300&width=400&text=Custom+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.8,
+      "reviews": 124,
+      "features": ["Custom subjects", "Eco-friendly materials", "Fast turnaround", "Bulk discounts"]
+    },
+    {
+      "id": "mathematics",
+      "icon": "database",
+      "name": "Mathematics Learning Plan",
+      "description": "Comprehensive math curriculum covering algebra, geometry, and calculus.",
+      "price": "Starting at $3.00",
+      "image": "/placeholder.svg?height=300&width=400&text=Mathematics+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.9,
+      "reviews": 89,
+      "features": ["Algebra", "Addition", "Subtraction", "Multiplication", "Division"]
+    },
+    {
+      "id": "science",
+      "icon": "server",
+      "name": "Science Learning Plan",
+      "description": "Engaging science curriculum covering biology, chemistry, and physics.",
+      "price": "Starting at $3.50",
+      "image": "/placeholder.svg?height=300&width=400&text=Science+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.8,
+      "reviews": 76,
+      "features": ["Biology", "Chemistry", "Physics", "Lab experiments"]
+    },
+    {
+      "id": "engineering",
+      "icon": "fingerprint",
+      "name": "Engineering Learning Plan",
+      "description": "Comprehensive engineering curriculum covering mechanical, electrical, and civil engineering.",
+      "price": "Starting at $4.00",
+      "image": "/placeholder.svg?height=300&width=400&text=Engineering+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.6,
+      "reviews": 156,
+      "features": ["Mechanical Engineering", "Electrical Engineering", "Civil Engineering", "Project Management"]
+    },
+    {
+      "id": "technology",
+      "icon": "fingerprint",
+      "name": "Technology Learning Plan",
+      "description": "Innovative curriculum covering computer science, programming, and information technology.",
+      "price": "Starting at $4.50",
+      "image": "/placeholder.svg?height=300&width=400&text=Technology+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.7,
+      "reviews": 89,
+      "features": ["Computer Science", "Programming", "Information Technology", "Cybersecurity"]
+    },
+    {
+      "id": "ethics",
+      "icon": "fingerprint",
+      "name": "Ethics Learning Plan",
+      "description": "Comprehensive curriculum covering ethical theories, principles, and applications.",
+      "price": "Starting at $3.00",
+      "image": "/placeholder.svg?height=300&width=400&text=Ethics+Learning+Plan",
+      "category": "Learning Plans",
+      "rating": 4.6,
+      "reviews": 78,
+      "features": ["Moral Philosophy", "Applied Ethics", "Case Studies", "Debate and Discussion"]
+    }
+  ]
+}

@@ -1,16 +1,14 @@
 import Link from "next/link";
+import { GetProducts } from '../../api/v1/public/getProducts';
+import { Product } from "../../api/types";
 import { SignInButton, SignUpButton, SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
     ChevronUp, 
     ChevronDown,
     Fingerprint,
     Database,
     Server,
-    ChevronsLeftRightEllipsis,
-    Rabbit,
-    MessagesSquare,
-    Globe
  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,9 +19,18 @@ import {
 
 export const Nav = ({ showNav }: { showNav: boolean }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [productData, setProductData] = useState<Product[]>([]);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        GetProducts().then(async (data) => {
+            const products = await data.json();
+            setProductData(products['products']);
+        });
+    }, []);
+   
     return (
         <nav className={ showNav ? "web-mobile-end border-b md:hidden" : "hidden" }>
             <div className="flex items-center gap-4 p-4">
@@ -70,51 +77,36 @@ export const Nav = ({ showNav }: { showNav: boolean }) => {
                             </CollapsibleTrigger>
                         </div>
                         <CollapsibleContent className="flex flex-col gap-2">
-                            <div className="group flex items-center gap-4 p-4">
-                                <Button 
-                                    className="text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a] size-15"
-                                    onClick={toggleMenu}
-                                    variant="secondary"
-                                    >
-                                    <Fingerprint className="stroke-2 text-cyan-500"/>
-                                </Button>
-                                <div className="text-sm">
-                                    <span className="text-sub-body text-primary font-bold"> Auth </span>
-                                    <p className="text-caption text-pretty text-gray-300">
-                                        Authentication and authorization services for your applications.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="group flex items-center gap-4 p-4">
-                                <Button 
-                                    className="text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a] size-15"
-                                    onClick={toggleMenu}
-                                    variant="secondary"
-                                    >
-                                    <Database className="stroke-2 text-cyan-500"/>
-                                </Button>
-                                <div className="text-sm">
-                                    <span className="text-sub-body text-primary font-bold"> Database </span>
-                                    <p className="text-caption text-pretty text-gray-300">
-                                        Scalable and secure database solutions for your data storage needs.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="group flex items-center gap-4 p-4">
-                                <Button 
-                                    className="text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a] size-15"
-                                    onClick={toggleMenu}
-                                    variant="secondary"
-                                    >
-                                    <Server className="stroke-2 text-cyan-500"/>
-                                </Button>
-                                <div className="text-sm">
-                                    <span className="text-sub-body text-primary font-bold"> Storage </span>
-                                    <p className="text-caption text-pretty text-gray-300">
-                                        Scalable and secure database solutions for your data storage needs.
-                                    </p>
-                                </div>
-                            </div>
+                            {productData.map((product, idx) => {
+                                if (idx < 3) {
+                                    return (
+                                        <div key={product.id} className="group flex items-center gap-4 p-4">
+                                            <Button 
+                                                className="text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a] size-15"
+                                                onClick={toggleMenu}
+                                                variant="secondary"
+                                            >
+                                                {(() => {
+                                                    switch (product.icon.toLowerCase()) {
+                                                        case "fingerprint":
+                                                            return <Fingerprint className="stroke-2 text-cyan-500" />;
+                                                        case "database":
+                                                            return <Database className="stroke-2 text-cyan-500" />;
+                                                        case "server":
+                                                            return <Server className="stroke-2 text-cyan-500" />;
+                                                    }
+                                                })()}
+                                            </Button>
+                                            <div className="text-sm">
+                                                <span className="text-sub-body text-primary font-bold"> {product.name} </span>
+                                                <p className="text-caption text-pretty text-gray-300">
+                                                    {product.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                            })}
                         </CollapsibleContent>
                     </Collapsible>
                 </li>

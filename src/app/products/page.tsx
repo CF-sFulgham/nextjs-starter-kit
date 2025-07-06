@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Box, Star } from "lucide-react"
+import { useState, useEffect } from "react";
+import { ArrowRight, Star } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,78 +9,21 @@ import { Badge } from "@/components/ui/badge"
 import { Banner } from "../components/banner/banner";
 import Footer from "../components/footer/footer";
 
-const products = [
-  {
-    id: "custom-learning",
-    name: "Custom Learning Plan",
-    description: "Tailored learning experiences designed to meet individual needs and goals.",
-    price: "Starting at $2.50",
-    image: "/placeholder.svg?height=300&width=400&text=Custom+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.8,
-    reviews: 124,
-    features: ["Custom subjects", "Eco-friendly materials", "Fast turnaround", "Bulk discounts"],
-  },
-  {
-    id: "mathematics",
-    name: "Mathematics Learning Plan",
-    description: "Comprehensive math curriculum covering algebra, geometry, and calculus.",
-    price: "Starting at $3.00",
-    image: "/placeholder.svg?height=300&width=400&text=Mathematics+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.9,
-    reviews: 89,
-    features: ["Algebra", "Addition", "Subtraction", "Multiplication", "Division"],
-  },
-  {
-    id: "science",
-    name: "Science Learning Plan",
-    description: "Engaging science curriculum covering biology, chemistry, and physics.",
-    price: "Starting at $3.50",
-    image: "/placeholder.svg?height=300&width=400&text=Science+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.8,
-    reviews: 76,
-    features: ["Biology", "Chemistry", "Physics", "Lab experiments"],
-  },
-  {
-    id: "engineering",
-    name: "Engineering Learning Plan",
-    description: "Comprehensive engineering curriculum covering mechanical, electrical, and civil engineering.",
-    price: "Starting at $4.00",
-    image: "/placeholder.svg?height=300&width=400&text=Engineering+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.6,
-    reviews: 156,
-    features: ["Mechanical Engineering", "Electrical Engineering", "Civil Engineering", "Project Management"],
-  },
-  {
-    id: "technology",
-    name: "Technology Learning Plan",
-    description: "Innovative curriculum covering computer science, programming, and information technology.",
-    price: "Starting at $4.50",
-    image: "/placeholder.svg?height=300&width=400&text=Technology+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.7,
-    reviews: 89,
-    features: ["Computer Science", "Programming", "Information Technology", "Cybersecurity"],
-  },
-  {
-    id: "ethics",
-    name: "Ethics Learning Plan",
-    description: "Comprehensive curriculum covering ethical theories, principles, and applications.",
-    price: "Starting at $3.00",
-    image: "/placeholder.svg?height=300&width=400&text=Ethics+Learning+Plan",
-    category: "Learning Plans",
-    rating: 4.6,
-    reviews: 78,
-    features: ["Moral Philosophy", "Applied Ethics", "Case Studies", "Debate and Discussion"],
-  },
-]
+import { GetProducts } from "../api/v1/public/getProducts"
+import { Product } from "../api/types";
 
 const categories = ["All", "Custom", "Mathematics", "Science", "Engineering", "Technology", "Ethics"]
 
 export default function ProductsPage() {
+  const [productData, setProductData] = useState<Product[]>([]);
+
+  useEffect(() => {
+      GetProducts().then(async (data) => {
+          const products = await data.json();
+          setProductData(products['products']);
+      });
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Banner />
@@ -110,7 +54,7 @@ export default function ProductsPage() {
               </div>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {products.map((product) => (
+                {productData.map((product) => (
                   <Card key={product.id} className="group overflow-hidden transition-all hover:shadow-lg">
                     <div className="aspect-[4/3] overflow-hidden">
                       <Image

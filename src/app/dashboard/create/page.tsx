@@ -420,11 +420,11 @@ export default function CreateDesignPage() {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Package Type</span>
                     <span className="font-medium">
-                      {selectedPackage === "box"
-                        ? "Shipping Box"
-                        : selectedPackage === "mailer"
-                          ? "Poly Mailer"
-                          : "Gift Box"}
+                      {selectedPackage === "parents"
+                        ? "Parents"
+                        : selectedPackage === "teachers"
+                          ? "Teachers"
+                          : "School Districts"}
                     </span>
                   </div>
                   <div className="flex justify-between">
