@@ -3,6 +3,7 @@
 import "./banner.css";
 import Image from "next/image";
 import Link from "next/link";
+import { SignInButton, SignUpButton, SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,14 +48,25 @@ export const Banner = () => {
             </Link>
           </nav>
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/login">
-              <Button size="sm" className="text-white border-0 inset-ring-cyan-500 inset-ring-1 bg-[#00b7eb2a] hover:bg-[#00b7eb2a]">
-                Sign in
-              </Button>
-            </Link>
-            <Link href="/signup">
-              <Button size="sm" className="bg-cyan-500 text-white hover:bg-cyan-500">Sign up</Button>
-            </Link>
+            <SignedOut>
+              <SignInButton>
+                <Button size="sm" className="text-white border-0 inset-ring-cyan-500 inset-ring-1 bg-[#00b7eb2a] hover:bg-[#00b7eb2a]">
+                  Sign in
+                </Button>
+              </SignInButton>
+              <SignUpButton>
+                <Button size="sm" className="bg-cyan-500 text-white hover:bg-cyan-500">
+                  Sign up
+                </Button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <SignOutButton>
+                  <Button size="sm" className="bg-cyan-500 text-white hover:bg-cyan-500">
+                      Sign Out
+                  </Button>
+              </SignOutButton>
+            </SignedIn>
           </div>
           <div className="flex flex-justify-end items-center gap-2 pr-2 md:hidden">
             <Button 

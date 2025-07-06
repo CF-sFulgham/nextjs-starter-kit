@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignInButton, SignUpButton, SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { useState } from "react";
 import { 
     ChevronUp, 
@@ -26,12 +27,25 @@ export const Nav = ({ showNav }: { showNav: boolean }) => {
     return (
         <nav className={ showNav ? "web-mobile-end border-b md:hidden" : "hidden" }>
             <div className="flex items-center gap-4 p-4">
-                <Button className="flex-1 text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a]" >
-                    <span>Sign In</span>
-                </Button>
-                <Button className="flex-1 bg-cyan-500 text-white text-md hover:bg-cyan-500">
-                    <span>Start Learning</span>
-                </Button>
+                <SignedOut>
+                    <SignInButton mode="modal">
+                        <Button className="flex-1 text-white border-0 inset-ring-cyan-500 inset-ring-1 text-md bg-[#00b7eb2a] hover:bg-[#00b7eb2a]" >
+                            <span>Sign In</span>
+                        </Button>
+                    </SignInButton>
+                    <SignUpButton mode="modal">
+                        <Button className="flex-1 bg-cyan-500 text-white text-md hover:bg-cyan-500">
+                            <span>Sign Up</span>
+                        </Button>
+                    </SignUpButton>
+                </SignedOut>
+                <SignedIn>
+                    <SignOutButton>
+                        <Button className="flex-1 bg-cyan-500 text-white text-md hover:bg-cyan-500">
+                            <span>Sign Out</span>
+                        </Button>
+                    </SignOutButton>
+                </SignedIn>
             </div>
             <ul>
                 <li>
