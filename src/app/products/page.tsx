@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Banner } from "../components/banner/banner";
 import Footer from "../components/footer/footer";
 
-import { GetProducts } from "../api/v1/public/getProducts"
+import { GetProducts } from "../api/v1/public/products/getProducts"
 import { Product } from "../api/types";
 
 const categories = ["All", "Custom", "Mathematics", "Science", "Engineering", "Technology", "Ethics"]

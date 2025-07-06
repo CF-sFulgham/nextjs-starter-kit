@@ -10,3 +10,30 @@ export type Product = {
     reviews: number;
     features: string[];
   };
+
+export type ActiveOrder = {
+    id: string;
+    product: string;
+    date: string;
+    status: string;
+};
+
+export type LearningPlan = {
+    title: string;
+    value: string;
+    description: string;
+    icon: string;
+};
+
+export type RecentPlan = {
+    title: string;
+    description: string;
+    status: string;
+};
+
+export type TrackingInfo = {
+    id: string;
+    orderId: string;
+    date: string;
+    status: string;
+};

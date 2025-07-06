@@ -1,0 +1,28 @@
+{
+    "learningPlans": [
+        {
+            "title": "Total Learning Plans",
+            "value": "12",
+            "description": "3 new this month",
+            "icon": "Box"
+        },
+        {
+            "title": "Active Orders",
+            "value": "4",
+            "description": "2 pending approval",
+            "icon": "Package"
+        },
+        {
+            "title": "Shipments",
+            "value": "8",
+            "description": "3 in transit",
+            "icon": "Truck"
+        },
+        {
+            "title": "Storage Used",
+            "value": "60%",
+            "description": "6GB of 10GB",
+            "icon": "Upload"
+        }
+    ]
+}

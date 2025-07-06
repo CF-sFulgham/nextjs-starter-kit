@@ -38,8 +38,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-import { auth, currentUser } from "@clerk/nextjs/server";
-
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(true)

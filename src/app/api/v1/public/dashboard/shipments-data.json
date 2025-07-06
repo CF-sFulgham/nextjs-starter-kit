@@ -1,0 +1,22 @@
+{
+    "shipments": [
+        {
+            "id": "TRK-9823",
+            "orderId": "ORD-7612",
+            "date": "July 2, 2025",
+            "status": "In Transit"
+        },
+        {
+            "id": "TRK-9814",
+            "orderId": "ORD-7598",
+            "date": "June 30, 2025",
+            "status": "Delivered"
+        },
+        {
+            "id": "TRK-9802",
+            "orderId": "ORD-7563",
+            "date": "June 28, 2025",
+            "status": "Delivered"
+        }
+    ]
+}

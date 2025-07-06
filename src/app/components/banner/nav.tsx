@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GetProducts } from '../../api/v1/public/getProducts';
+import { GetProducts } from '../../api/v1/public/products/getProducts';
 import { Product } from "../../api/types";
 import { SignInButton, SignUpButton, SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { useState, useEffect } from "react";

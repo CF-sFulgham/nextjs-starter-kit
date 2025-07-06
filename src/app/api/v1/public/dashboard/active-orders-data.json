@@ -1,0 +1,22 @@
+{
+    "activeOrders": [
+        {
+            "id": "ORD-7652",
+            "product": "Science Learning Plan",
+            "date": "July 3, 2025",
+            "status": "Processing"
+        },
+        {
+            "id": "ORD-7645",
+            "product": "Mathematics Learning Plan",
+            "date": "July 1, 2025",
+            "status": "Pending Approval"
+        },
+        {
+            "id": "ORD-7612",
+            "product": "Custom Learning Plan",
+            "date": "June 28, 2025",
+            "status": "In Production"
+        }
+    ]
+}
