@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "tailwindcss/components";
+@import "tw-animate-css";
+
+@layer utilities {
+    .web-mobile-start {
+        border-block-end: solid 1px var(--ring);
+    }
+    .web-mobile-end {
+        border-block-start: solid 1px var(--ring);
+    }
+}
