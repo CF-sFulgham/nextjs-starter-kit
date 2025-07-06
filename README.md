@@ -17,7 +17,7 @@ To enable authentication, use [Clerk](https://clerk.com/):
     - Retrieve your `SECRET_KEY` and `PUBLISHABLE_KEY` from the Clerk dashboard.
 
 4. **Set Up Environment Variables**  
-    - Create a `.env` file in your project root and add the following keys:
+    - Create a `.env` file in the project root and add the following keys:
 
       ```env
       CLERK_SECRET_KEY=your-secret-key
