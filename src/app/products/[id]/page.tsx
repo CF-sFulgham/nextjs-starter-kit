@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight, Box, Check, Package, Star, Truck } from "lucide-react"
+import { ArrowLeft, ArrowRight, Check, Package, Star, Truck } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Banner } from "../../components/banner/banner";
 import Footer from "../../components/footer/footer";
 
-const products = {
+const products: { [key: string]: Product } = {
   "custom-learning": {
     id: "custom-learning",
     name: "Custom Learning Plan",
@@ -168,14 +168,33 @@ const products = {
   },
 }
 
-interface ProductPageProps {
-  params: {
-    id: string
-  }
-}
+type Product = {
+    id: string;
+    name: string;
+    description: string;
+    longDescription: string;
+    price: string;
+    priceRange: string;
+    images: string[];
+    category: string;
+    rating: number;
+    reviews: number;
+    features: string[];
+    specifications: {
+        [key: string]: string;
+    };
+    plans: {
+        name: string;
+        duration: string;
+        price: string;
+    }[];
+    useCases: string[];
+};
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await products[params.id as keyof typeof products]
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const parms = await params;
+  const id = parms.id;
+  const product = products[id] as Product | undefined;
 
   if (!product) {
     notFound()

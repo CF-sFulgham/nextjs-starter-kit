@@ -429,7 +429,7 @@ export default function CreateDesignPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Size</span>
-                    <span className="font-medium">Medium (10" x 8" x 4")</span>
+                    <span className="font-medium">Medium</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Material</span>
